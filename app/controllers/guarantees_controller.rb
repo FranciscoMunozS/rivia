@@ -15,6 +15,7 @@ class GuaranteesController < ApplicationController
   end
 
   def index
+    @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 5)
     @guarantees = Guarantee.all
     respond_to do |format|
       format.html
@@ -22,7 +23,6 @@ class GuaranteesController < ApplicationController
         response.headers['Content-Disposition'] = 'attachement; filename="boletas.xlsx"'
       }
     end
-    @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
