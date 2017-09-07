@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  income_number: MyString
+  income_date: 2017-08-22
+  income_applicant: MyString
+  borrower_name: MyString
+  borrower_id: MyString
+  bank_name: MyString
+  value_guarantee: MyString
+  currency_guarantee: MyString
+  due_date: 2017-08-22
+  bail: MyString
+  detail: MyString
+  bip: MyString
+  email: MyString
+  observation: MyText
+
+two:
+  income_number: MyString
+  income_date: 2017-08-22
+  income_applicant: MyString
+  borrower_name: MyString
+  borrower_id: MyString
+  bank_name: MyString
+  value_guarantee: MyString
+  currency_guarantee: MyString
+  due_date: 2017-08-22
+  bail: MyString
+  detail: MyString
+  bip: MyString
+  email: MyString
+  observation: MyText

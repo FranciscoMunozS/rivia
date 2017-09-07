@@ -1,0 +1,75 @@
+= simple_form_for @guarantee, html: { multipart: true }, validate: true do |f|
+  - if @guarantee.errors.any?
+    #errors
+      %ul
+        - @guarantee.errors.full_messages.each do |msg|
+          %li.text-danger= msg
+  .card
+    .card-body
+      %h3 Datos boleta de garantía
+      %p= number_to_currency(@guarantee.correlative, :unit => "", :precision => 0)
+      %hr
+      .form-row
+        .form-group.col-md-6
+          = f.input :state, input_html: { class: 'form-control' }
+        .form-group.col-md-6
+          = f.input :devolution_number, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-4
+          = f.input :devolution_date, as: :date, order: [:day, :month, :year], input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :devolution_return, input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :sectorialist_devolution, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-6
+          = f.input :email, input_html: { class: 'form-control' }
+        .form-group.col-md-6
+          = f.input :technical_unit, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :observation, input_html: { class: 'form-control' }
+  %br
+  .card
+    .card-body
+      %h3 Datos boleta de garantía
+      %hr
+      .form-row
+        .form-group.col-md-4
+          = f.input :income_number, input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :income_applicant, input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :income_date, as: :date, order: [:day, :month, :year], input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-6
+          = f.input :borrower_name, input_html: { class: 'form-control' }
+        .form-group.col-md-6
+          = f.input :borrower_id, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :bank_name, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-4
+          = f.input :value_guarantee, input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :currency_guarantee, input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :due_date, as: :date, order: [:day, :month, :year], input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :bail, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :detail, input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :bip, input_html: { class: 'form-control' }
+        - if params[:action] != "edit"
+          .form-group.col-md-6
+            = f.input :email, input_html: { class: 'form-control' }
+          .form-group.col-md-12
+            = f.input :observation, input_html: { class: 'form-control' }
+
+      = f.button :submit, class: "btn btn-outline-primary"
+      =link_to 'Cancelar', root_path, class: 'btn btn-outline-secondary'

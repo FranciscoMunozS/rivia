@@ -1,0 +1,48 @@
+= simple_form_for @guarantee, html: { multipart: true }, validate: true do |f|
+  - if @guarantee.errors.any?
+    #errors
+      %ul
+        - @guarantee.errors.full_messages.each do |msg|
+          %li.text-danger= msg
+  .card
+    .card-body
+      %h3 Datos boleta de garantía
+      %hr
+      .form-row
+        .form-group.col-md-4
+          = f.input :income_number, label: 'Numero de ingreso', input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :income_applicant, label: 'Solicitante de ingreso', input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :income_date, as: :date, order: [:day, :month, :year], label: 'Fecha de ingreso', input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-6
+          = f.input :borrower_name, label: 'Nombre tomador', input_html: { class: 'form-control' }
+        .form-group.col-md-6
+          = f.input :borrower_id, label: 'RUT tomador', input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-12
+          = f.input :bank_name, label: 'Nombre banco', input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-6
+          = f.input :value_guarantee, label: 'Valor garantía', input_html: { class: 'form-control' }
+        .form-group.col-md-6
+          = f.input :currency_guarantee, label: 'Moneda garantía', input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-4
+          = f.input :due_date, as: :date, order: [:day, :month, :year], label: 'Fecha de vencimiento', input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :bail, label: 'Caución', input_html: { class: 'form-control' }
+        .form-group.col-md-4
+          = f.input :detail, label: 'Detalle', input_html: { class: 'form-control' }
+      .form-row
+        .form-group.col-md-6
+          = f.input :bip, label: 'BIP', input_html: { class: 'form-control' }
+        - if params[:action] != "edit"
+          .form-group.col-md-6
+            = f.input :email, label: 'Correo electronico', input_html: { class: 'form-control' }
+          .form-group.col-md-12
+            = f.input :observation, label: 'Observaciones', input_html: { class: 'form-control' }
+
+      = f.button :submit, class: "btn btn-outline-primary"
+      =link_to 'Cancelar', root_path, class: 'btn btn-outline-secondary'

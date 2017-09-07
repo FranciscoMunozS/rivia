@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  higlight_cell = style.add_style(bg_color: "EFC376")
+
+  wb.add_worksheet(name: "Boletas de garantía") do |sheet|
+    @guarantees.each do |guarantee|
+      sheet.add_row [guarantee.income_number, guarantee.income_date, guarantee.income_applicant, guarantee.borrower_name, guarantee.borrower_id, guarantee.bank_name, guarantee.value_guarantee, guarantee.currency_guarantee, guarantee.due_date, guarantee.bail, guarantee.detail, guarantee.bip, guarantee.email, guarantee.observation, guarantee.state, guarantee.devolution_number, guarantee.devolution_return, guarantee.devolution_date, guarantee.sectorialist_devolution, guarantee.technical_unit], style: [higlight_cell]
+    end
+  end
+end

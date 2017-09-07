@@ -1,0 +1,26 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .navbar-brand
+    .hover08
+      %img{:alt => "", :height => "30", :src => "http://www.iconsdb.com/icons/preview/guacamole-green/leaf-xxl.png", :width => "30"}/
+      = link_to "Gobierno Regional de Los Ríos", root_path
+  - if user_signed_in?
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to "Ingresar nueva garantía", new_guarantee_path, class: 'nav-link'
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          = link_to "Inicio", root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to current_user.email, edit_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger btn-sm'
+  - else
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.active
+          %a.nav-link{:href => "#"} Inicio

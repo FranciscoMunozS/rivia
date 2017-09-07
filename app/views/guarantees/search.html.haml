@@ -1,0 +1,36 @@
+.card
+  .card-body
+    %h3 Resultados de la busqueda
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            N° garantía
+          %th
+            Ingreso
+          %th
+            Vencimiento
+          %th
+            Devolución
+          %th
+            Detalle
+          %th
+            Analista
+          %th
+            Valor
+          %th
+            BIP
+          %th(colspan="2")
+            Opciones
+      %tbody
+        - @guarantees.each do |guarantee|
+          %tr
+            %td= guarantee.guarantee_number.round
+            %td= guarantee.income_date
+            %td= guarantee.due_date
+            %td= guarantee.devolution_date
+            %td= guarantee.detail
+            %td= guarantee.sectorialist_devolution
+            %td= number_to_currency(guarantee.value_guarantee, :unit => "$", :precision => 0)
+            %td= guarantee.bip
+            %td= link_to 'Ver detalles', edit_guarantee_path(guarantee), class: 'btn btn-outline-secondary btn-sm'
