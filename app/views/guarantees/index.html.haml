@@ -1,46 +1,45 @@
-.card
-  .card-body
-    = link_to 'Descargar Excel', guarantees_path(format: :xlsx), class: 'btn btn-outline-secondary float-right'
-    .row
-      .col-md-4
-        = form_tag search_guarantees_path, method: :get, class: 'form-inline', role: "search" do
-          = text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'Buscar...'
-          = submit_tag "Buscar", name: nil, class: "btn btn-outline-success"
-    %br
-    %table.table.table-hover
-      %thead
-        %tr
-          %th
-            N° garantía
-          %th
-            Ingreso
-          %th
-            Vencimiento
-          %th
-            Devolución
-          %th
-            Detalle
-          %th
-            Analista
-          %th
-            Valor
-          %th
-            BIP
-          %th(colspan="2")
-            Opciones
-      %tbody
-        - @guarantees.each do |guarantee|
-          %tr
-            %td= guarantee.guarantee_number.round
-            %td= guarantee.income_date
-            %td= guarantee.due_date
-            %td= guarantee.devolution_date
-            %td= guarantee.detail
-            %td= guarantee.sectorialist_devolution
-            %td= number_to_currency(guarantee.value_guarantee, :unit => "$", :precision => 0)
-            %td= guarantee.bip
-            %td= link_to 'Ver detalles', edit_guarantee_path(guarantee), class: 'btn btn-outline-secondary btn-sm'
-            %td= link_to 'Eliminar', guarantee, method: :delete, data: { confirm: "Esta seguro?" }, class: 'btn btn-outline-danger btn-sm'
+= link_to 'Descargar Excel', guarantees_path(format: :xlsx), class: 'btn btn-outline-secondary float-right'
+.row
+  .col-md-4
+    = form_tag search_guarantees_path, method: :get, class: 'form-inline', role: "search" do
+      = text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'Buscar...'
+      = submit_tag "Buscar", name: nil, class: "btn btn-outline-success"
+%br
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Numero garantía
+      %th
+        Fecha ingreso
+      %th
+        Fecha vencimiento
+      %th
+        Fecha devolución
+      %th
+        Detalle
+      %th
+        Analista
+      %th
+        Valor
+      %th
+        BIP
+      %th(colspan="2")
+        Opciones
+  %tbody
+    - @guarantees.each do |guarantee|
+      %tr
+        %td= guarantee.guarantee_number.round
+        %td= guarantee.income_date
+        %td= guarantee.due_date
+        %td= guarantee.devolution_date
+        %td= guarantee.detail
+        %td= guarantee.sectorialist_devolution
+        %td= number_to_currency(guarantee.value_guarantee, :unit => "$", :precision => 0)
+        %td= guarantee.bip
+        %td= link_to 'Ver detalles', edit_guarantee_path(guarantee), class: 'btn btn-outline-secondary btn-sm'
+        %td= link_to 'Eliminar', guarantee, method: :delete, data: { confirm: "Esta seguro?" }, class: 'btn btn-outline-danger btn-sm'
 
 %br
-= will_paginate @guarantees, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer
+.center
+  = will_paginate @guarantees, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm'
