@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170907142027) do
     t.string   "state"
     t.string   "bail"
     t.string   "detail"
-    t.string   "bip"
+    t.float    "bip"
     t.float    "devolution_number"
     t.date     "devolution_date"
     t.string   "devolution_return"

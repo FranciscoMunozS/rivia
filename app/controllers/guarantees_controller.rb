@@ -49,7 +49,7 @@ class GuaranteesController < ApplicationController
 
   def update
     if @guarantee.update(guarantee_params)
-      redirect_to @guarantee, notice: "Boleta actualizada correctamente"
+      redirect_to 'edit', notice: "Boleta actualizada correctamente"
     else
       render 'edit'
     end

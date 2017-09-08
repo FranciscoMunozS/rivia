@@ -29,14 +29,14 @@
   %tbody
     - @guarantees.each do |guarantee|
       %tr
-        %td= guarantee.guarantee_number.round
-        %td= guarantee.income_date
-        %td= guarantee.due_date
-        %td= guarantee.devolution_date
+        %td= guarantee.guarantee_number.try(:round)
+        %td= guarantee.income_date.strftime("%d/%m/%y")
+        %td= guarantee.due_date.strftime("%d/%m/%y")
+        %td= guarantee.devolution_date.try(:strftime, "%d/%m/%y")
         %td= guarantee.detail
         %td= guarantee.sectorialist_devolution
-        %td= number_to_currency(guarantee.value_guarantee, :unit => "$", :precision => 0)
-        %td= guarantee.bip
+        %td= number_to_currency(guarantee.value_guarantee, :unit => "$", :precision => 0, format: "%u %n")
+        %td= guarantee.bip.to_i
         %td= link_to 'Ver detalles', edit_guarantee_path(guarantee), class: 'btn btn-outline-secondary btn-sm'
         %td= link_to 'Eliminar', guarantee, method: :delete, data: { confirm: "Esta seguro?" }, class: 'btn btn-outline-danger btn-sm'
 

@@ -1,7 +1,7 @@
 en:
   will_paginate:
-    previous_label: "&#8592; Anterior"
-    next_label: "Siguiente &#8594;"
+    previous_label: "Anterior"
+    next_label: "Siguiente"
     page_gap: "&hellip;"
   helpers:
     submit:

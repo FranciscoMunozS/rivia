@@ -15,7 +15,7 @@ class CreateGuarantees < ActiveRecord::Migration[5.0]
       t.string  :state
       t.string :bail
       t.string :detail
-      t.string :bip
+      t.float :bip
       t.float :devolution_number
       t.date   :devolution_date
       t.string :devolution_return
